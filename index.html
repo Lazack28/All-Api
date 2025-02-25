@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Directory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .dark-mode {
+            background-color: #1e1e1e;
+            color: #f4f4f4;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #0073e6;
+            color: white;
+        }
+
+        #search {
+            padding: 8px;
+            width: 40%;
+        }
+
+        #theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+
+        #api-list {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .api-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .dark-mode .api-card {
+            background: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #0073e6;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>API Directory</h1>
+        <input type="text" id="search" placeholder="Search APIs...">
+        <button id="theme-toggle">🌙</button>
+    </header>
+
+    <main id="api-list">
+        <!-- APIs will be loaded here dynamically -->
+    </main>
+
+    <footer>
+        <p>Contact us on:</p>
+        <a href="#" target="_blank">Twitter</a> |
+        <a href="#" target="_blank">GitHub</a> |
+        <a href="#" target="_blank">Email</a>
+    </footer>
+
+    <script>
+        const apis = [
+            { owner: "Salman", name: "api.ahmmikum.live", link: "https://api.ahmmikum.live", description: "A powerful API for various services." },
+            { owner: "MiftaGanzz", name: "itzpire.com", link: "https://itzpire.com", description: "An innovative API service provider." },
+            { owner: "Maher Zubair", name: "api.nexoracle.com", link: "https://api.nexoracle.com", description: "Next-gen Oracle API platform." },
+            { owner: "Bk9Dev", name: "bk9.fun", link: "https://bk9.fun", description: "Fun and useful API services." },
+            { owner: "Haki Xer", name: "nikka-api.us.kg", link: "https://nikka-api.us.kg", description: "Advanced API solutions from Nikka." },
+            { owner: "Gifted Tech", name: "api.giftedtech.my.id", link: "https://api.giftedtech.my.id", description: "Comprehensive API services." },
+            { owner: "YuzuDev", name: "apigratis.tech", link: "https://apigratis.tech", description: "Free API services for developers." },
+            { owner: "Fongsi Dev", name: "fgsi-restapi.hf.space", link: "https://fgsi-restapi.hf.space", description: "Reliable REST API platform." },
+            { owner: "Balz Dev", name: "apii.ambalzz.biz.id", link: "https://apii.ambalzz.biz.id", description: "Feature-rich API for developers." },
+            { owner: "DitzDev", name: "api.ditzdev.my.id", link: "https://api.ditzdev.my.id", description: "Efficient API solutions." },
+            { owner: "Sipputzx", name: "api.sipputzx.my.id", link: "https://api.sipputzx.my.id", description: "Smart API for multiple uses." },
+            { owner: "Nekohime", name: "nkhm.xyz", link: "https://nkhm.xyz", description: "A unique API service provider." },
+            { owner: "Alex", name: "api.paxsenix.biz.id", link: "https://api.paxsenix.biz.id", description: "Secure and scalable API platform." }
+        ];
+
+        function loadAPIs() {
+            const apiList = document.getElementById("api-list");
+            apiList.innerHTML = "";
+            apis.forEach(api => {
+                const apiCard = document.createElement("div");
+                apiCard.classList.add("api-card");
+                apiCard.innerHTML = `
+                    <h3>${api.name}</h3>
+                    <p><strong>Owner:</strong> ${api.owner}</p>
+                    <p>${api.description}</p>
+                    <a href="${api.link}" target="_blank">Visit API</a>
+                `;
+                apiList.appendChild(apiCard);
+            });
+        }
+
+        document.getElementById("search").addEventListener("input", function (e) {
+            const query = e.target.value.toLowerCase();
+            const filteredAPIs = apis.filter(api => 
+                api.name.toLowerCase().includes(query) || api.owner.toLowerCase().includes(query)
+            );
+            
+            document.getElementById("api-list").innerHTML = "";
+            filteredAPIs.forEach(api => {
+                const apiCard = document.createElement("div");
+                apiCard.classList.add("api-card");
+                apiCard.innerHTML = `
+                    <h3>${api.name}</h3>
+                    <p><strong>Owner:</strong> ${api.owner}</p>
+                    <p>${api.description}</p>
+                    <a href="${api.link}" target="_blank">Visit API</a>
+                `;
+                document.getElementById("api-list").appendChild(apiCard);
+            });
+        });
+
+        document.getElementById("theme-toggle").addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
+            this.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+        });
+
+        // Load APIs initially
+        loadAPIs();
+    </script>
+</body>
+  </html>
