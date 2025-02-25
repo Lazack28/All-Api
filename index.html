@@ -49,30 +49,42 @@
             justify-content: center;
         }
 
-        .api-card a {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #0073e6;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-.api-card a:hover {
-    background-color: #005bb5;
-}
         .api-card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
-}
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+        }
 
-.api-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
-}
+        .api-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .api-card a {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #0073e6;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .api-card a:hover {
+            background-color: #005bb5;
+        }
 
         .dark-mode .api-card {
             background: #333;
+        }
+
+        .api-status {
+            font-weight: bold;
+            margin-top: 5px;
         }
 
         footer {
@@ -130,9 +142,24 @@
                     <p><strong>Owner:</strong> ${api.owner}</p>
                     <p>${api.description}</p>
                     <a href="${api.link}" target="_blank">Visit API</a>
+                    <p class="api-status">Checking...</p>
                 `;
                 apiList.appendChild(apiCard);
             });
+
+            // Check API statuses
+            document.querySelectorAll(".api-status").forEach((statusElement, index) => {
+                checkAPIStatus(apis[index].link, statusElement);
+            });
+        }
+
+        async function checkAPIStatus(apiUrl, element) {
+            try {
+                const response = await fetch(apiUrl, { method: "HEAD" });
+                element.textContent = response.ok ? "🟢 Online" : "🔴 Offline";
+            } catch (error) {
+                element.textContent = "🔴 Offline";
+            }
         }
 
         document.getElementById("search").addEventListener("input", function (e) {
@@ -150,8 +177,14 @@
                     <p><strong>Owner:</strong> ${api.owner}</p>
                     <p>${api.description}</p>
                     <a href="${api.link}" target="_blank">Visit API</a>
+                    <p class="api-status">Checking...</p>
                 `;
                 document.getElementById("api-list").appendChild(apiCard);
+            });
+
+            // Check API statuses after filtering
+            document.querySelectorAll(".api-status").forEach((statusElement, index) => {
+                checkAPIStatus(filteredAPIs[index].link, statusElement);
             });
         });
 
@@ -164,4 +197,4 @@
         loadAPIs();
     </script>
 </body>
-  </html>
+    </html>
