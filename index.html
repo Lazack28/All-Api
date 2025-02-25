@@ -49,14 +49,19 @@
             justify-content: center;
         }
 
-        .api-card {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
+        .api-card a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #0073e6;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.api-card a:hover {
+    background-color: #005bb5;
+}
         .api-card {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s;
 }
