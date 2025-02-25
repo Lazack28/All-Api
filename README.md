@@ -8,10 +8,9 @@ A professional and modern API directory listing various APIs along with their ow
 ✅ **Search Bar** – Allows filtering APIs by name or owner.  
 ✅ **Dark/Light Mode Toggle** – Easily switch between themes.  
 ✅ **Modern, Professional Design** – Clean and stylish layout.  
-✅ **Single File Deployment** – Just save as `index.html` and open in a browser.  
 
 ## 📸 Preview  
-![API Directory Screenshot](https://your-image-url.com)
+![API Directory Screenshot](https://i.imgur.com/boala0Y.jpeg)
 
 ## 🛠 Installation & Usage  
 1. **Clone the repository**  
