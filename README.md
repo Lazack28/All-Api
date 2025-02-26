@@ -23,7 +23,8 @@ A professional and modern API directory listing various APIs along with their ow
 🌍 Live Demo
 
 🔗 View the API Directory
-      ```https://payus.web.id```
+      
+      https://payus.web.id
 
 🤝 Contributing
 
