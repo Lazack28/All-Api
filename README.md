@@ -18,14 +18,13 @@ A professional and modern API directory listing various APIs along with their ow
    git clone https://github.com/Lazack28/All-Api.git
    cd All-Api
 
-2. Open the index.html file in a browser
-No additional setup required.
-
 
 
 🌍 Live Demo
 
 🔗 View the API Directory
+     
+     ```https://payus.web.id
 
 🤝 Contributing
 
